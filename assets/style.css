@@ -105,6 +105,18 @@ nav ul li a:hover {
     color: whitesmoke;
 }
 
+.pagar {
+    background-color: #1100ce;
+    border: none;
+    color: whitesmoke;
+    transition: .4s;
+}
+
+.pagar:hover{
+    background-color: #09006e;
+    color: whitesmoke;
+}
+
 .btn-vaciar{
     color: whitesmoke;
     background: red;

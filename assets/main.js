@@ -6,8 +6,7 @@ const templateFooter = document.getElementById('template-footer').content;
 const templateCarrito = document.getElementById('template-carrito').content;
 const fragment = document.createDocumentFragment();
 let carrito = {}; 
-
-
+const pagar = document.querySelector('.pagar');
 
 
 
@@ -26,6 +25,7 @@ service.addEventListener('click', e => {
 items.addEventListener('click', e => {
     btnAccion(e);
 })
+
 
 
 
@@ -63,6 +63,14 @@ const addCarrito = e => {
     if(e.target.classList.contains('btn')){
         setCarrito(e.target.parentElement);
     }
+    Toastify({
+        text: "Servicio agregado :)",
+        duration: 3000,
+        gravity: 'bottom',
+        style: {
+            background: "blue",
+        }
+    }).showToast();
     e.stopPropagation();
 }
 
@@ -136,6 +144,68 @@ const mostrarFooter = () => {
         carrito = {};
         mostrarCarrito();
     })
+
+    const pagar = document.getElementById('pagar');
+    pagar.addEventListener('click', () => {
+        (async () => {
+            const { value: pago } = await Swal.fire({
+                title: 'Seleccioná un método de pago',
+                color: '#01000f',
+                input: 'select',
+                inputOptions: {
+                    MercadoPago: 'Mercado Pago',
+                    Efectivo: 'Efectivo',
+                    Paypal: 'PayPal'
+                },
+                inputPlaceholder: 'Seleccioná',
+                showCancelButton: true,
+                confirmButtonColor: '#1987b3',
+                inputValidator: (value) => {
+                    return new Promise((resolve) => {
+                        if (value === 'MercadoPago') {
+                            resolve();
+                        } else if (value === 'Efectivo'){
+                            resolve();
+                        } else if (value === 'Paypal'){
+                            resolve();
+                        } else {
+                            resolve('Necesitas seleccionar un método :)');
+                        }
+                    })
+                }
+            })
+    
+            if (pago === 'MercadoPago') {
+                Swal.fire({
+                    title:`Seleccionaste: ${pago}`,
+                    text:'CVU: xxxxxxxxx',
+                    confirmButtonColor: '#1987b3'
+                });
+            } else if (pago === 'Efectivo') {
+                Swal.fire({
+                    title:`Seleccionaste: ${pago}`,
+                    confirmButtonColor: '#1987b3'
+                });
+            } else if (pago === 'Paypal'){
+                Swal.fire({
+                    title:`Seleccionaste: ${pago}`,
+                    text: 'Solicitar boleta por mail: ezequiel@gmail.com',
+                    confirmButtonColor: '#1987b3'
+                });
+            }
+        })()
+    })
+
+    btnVaciar.addEventListener("click", () => {
+        Toastify({
+            text: "Carrito vaciado :(",
+            duration: 3000,
+            gravity: 'bottom',
+            style: {
+                background: "red",
+            }
+        }).showToast();
+    })
 }
 
 
@@ -147,6 +217,14 @@ const btnAccion = e => {
         const servicio = carrito[e.target.dataset.id];
         servicio.cantidad++;  
         carrito[e.target.dataset.id] = {...servicio};
+        Toastify({
+            text: "Servicio agregado :)",
+            duration: 3000,
+            gravity: 'bottom',
+            style: {
+                background: "blue",
+            }
+        }).showToast();
         mostrarCarrito();
     }
 
@@ -156,8 +234,24 @@ const btnAccion = e => {
         if(servicio.cantidad === 0){
             delete carrito[e.target.dataset.id];
         }
+        Toastify({
+                text: "Servicio quitado :(",
+                duration: 3000,
+                gravity: 'bottom',
+                style: {
+                    background: "red",
+                }
+            }).showToast();
         mostrarCarrito();
     }
 
     e.stopPropagation();
 }
+
+
+
+
+
+
+
+
