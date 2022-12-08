@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIABLES */
+:root {
+    --bg-color: #01000f;
+    --bg-nav: #02001b;
+    --text: whitesmoke;
+    --fuente: 'Roboto Condensed', sans-serif;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text);
+    font-family: var(--fuente);
+}
+
+
+/*                        NAVBAR                             */
+nav {
+    background: var(--bg-nav);
+    height: 90px;
+    width: 100%;
+    z-index: 1;
+}
+
+nav .index {
+    position: absolute;
+    padding: 20px 20px;
+    margin-left: 30px;
+    font-size: 25px;
+    text-decoration: none;
+    color: var(--text);
+    transition: .3s;
+    line-height: 50px;
+    font-weight: bolder;
+}
+
+nav ul {
+    float: right;
+    list-style: none;
+    margin-right: 40px;
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 90px;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--text);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .5s;
+}
+
+nav ul li a:hover {
+    color: #949494;
+}
+
+.checkbtn {
+    font-size: 30px;
+    color: whitesmoke;
+    float: right;
+    line-height: 90px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+/*        SERVICIOS          */
+#s-title {
+    text-align: center;
+    padding: 30px;
+}
+
+.card {
+    background-color: #01000f;
+    color: whitesmoke;
+    text-align: left;
+    padding: 10px;
+    margin: 5px;
+    /* border: 1px solid whitesmoke; */
+}
+
+.btn-mas, .btn-menos, .btn-add{
+    background-color: #1100ce;
+    border: none;
+    color: whitesmoke;
+    transition: .4s;
+}
+
+.btn-mas:hover, .btn-menos:hover, .btn-add:hover{
+    background-color: #09006e;
+    color: whitesmoke;
+}
+
+.btn-vaciar{
+    color: whitesmoke;
+    background: red;
+    transition: .4s;
+}
+
+.btn-vaciar:hover{
+    background: rgb(255, 108, 108);
+}
+
+th, td{
+    color: whitesmoke;
+}
+
+.table{
+    width: 90%;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*                        MEDIA QUERIE TABLET                */
+@media (max-width: 1024px) {
+    nav .index {
+        margin-left: 15px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+}
+
+
+
+
+/*                        MEDIA QUERIE CELULAR                */
+@media (max-width: 586px) {
+    .checkbtn {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        
+    }
+
+    nav .index {
+        margin-left: 10px;
+        font-size: 24px;
+    }
+
+    ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #030027;
+        top: 90px;
+        left: -100%;
+        text-align: center;
+        transition: all .4s;
+        
+    }
+
+    nav ul li {
+        display: block;
+        margin: 40px 0;
+        line-height: 30px;
+        
+    }
+
+    nav ul li a {
+        font-size: 15px;
+    }
+
+    #check:checked~ul {
+        left: 0;
+        
+    }
+
+    #divservicios {
+        /* display: flex;
+        flex-direction: column; */
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+        margin-top: 30px;
+        gap: 3rem;
+        margin-left: 30px;
+    }
+}

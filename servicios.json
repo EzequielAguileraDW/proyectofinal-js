@@ -1,0 +1,6 @@
+[
+    { "id": 1, "nombre": "Mantenimiento", "precio": 2500, "img": "../assets/img/mantenimiento.png" },
+    { "id": 2, "nombre": "Armado de pc", "precio": 3000, "img": "../assets/img/armadopc.png" },
+    { "id": 3, "nombre": "Cambio de componentes", "precio": 1500, "img": "../assets/img/componentes.png" },
+    { "id": 4, "nombre": "Formateo e instalación de SO", "precio": 2000, "img": "../assets/img/sistema.png" }
+]
